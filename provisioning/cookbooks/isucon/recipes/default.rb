@@ -8,6 +8,10 @@ execute "systemctl-daemon-reload" do
   action :nothing
 end
 
+package "zip"
+package "unzip"
+package "gcc"
+package "git"
 
 ## mysql
 
@@ -375,8 +379,10 @@ cd /var/www/webapp/php
 
 ## java
 cd /var/www/webapp/java/isutomo
+chmod a+x ./mvnw
 ./mvnw clean package
 cd /var/www/webapp/java/isuwitter
+chmod a+x ./mvnw
 ./mvnw clean package
 
 chown -R root:root /var/www/webapp
